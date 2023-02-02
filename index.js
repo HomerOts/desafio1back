@@ -2,7 +2,7 @@
 let products = [];
 
 class ProductManager {
-  constructor(title,description,price,thumbnail,code,stock,id){
+  constructor(title,description,price,thumbnail,code,stock,id,path){
     this.title = title ;
     this.description = description;
     this.price = price ;
@@ -10,6 +10,7 @@ class ProductManager {
     this.code = code ;
     this.stock = stock ;
     this.id = ProductManager.incrementId();
+    this.path = path;
   }
  
  static incrementId() {
@@ -21,21 +22,27 @@ class ProductManager {
 addProduct() {
       products.push(product1,product2,product3);
     }
-
-    
-
   
   getProducts() {
     console.log(products);
     }
 
+
+/* COMENTO ESTE METODO PORQUE NO LOGRO LLEGAR AL RESULTADO
     getProductById(id) {
-      if(this.ProductManager.some(ProductManager => ProductManager.id === id)) {
-        let producto_buscado = this.ProductManager.filter( ProductManager => ProductManager.id === id)
+      if (this.products.some(products => products.id === id)) {
+        let producto_buscado = this.products.find(products => products.id === id)
         console.log(producto_buscado);
-      } else {
-        console.log("El producto no existe");
-      }
+      } 
+    
+    }  */
+
+    updateProduct() {
+
+    }
+
+    deleteProduct() {
+
     }
 
   }
@@ -50,7 +57,8 @@ product1.addProduct();
 product2.addProduct();
 product3.addProduct();
 console.log(products);
-product1.getProductById(1)
+// getProductById(3);
+
 
 
 
