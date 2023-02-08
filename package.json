@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "desafio1",
   "version": "1.0.0",
   "description": "",
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/HomerOts/desafio1back/issues"
   },
-  "homepage": "https://github.com/HomerOts/desafio1back#readme"
+  "homepage": "https://github.com/HomerOts/desafio1back#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "js": "^0.1.0",
+    "nodemon": "^2.0.20"
+  }
 }
