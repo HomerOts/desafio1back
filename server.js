@@ -81,30 +81,32 @@ export default new ProductManager("./products.json");
 
 
 
-import express, { json, response } from "express"
+import express from "express"
 
 const app = express();
- 
-const productos = products;
+const routerProducts = express.Router();
 
-app.get('/getProducts', (req, res) => {
-    res.send(productos) 
+// Declaramos los endpoints
+app.use('/products', routerProducts);
+
+routerProducts.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended:true}))
+app.use(express.static('public'));
+
+// 
+routerProducts.get('/listar', (req, res) => {
+  res.json(products);
 })
 
-app.use(express.urlencoded({extended:true}));
-
-
-app.get('/',(req,res) => {
-let limit = req.query.limit;
-if (!limit||(limit!==0)) return res.send({products})
-let productosFiltrados = products.filter(products=> products.limit === limit);
-res.send({products:productosFiltrados})
+routerProducts.post('/guardar', (req, res) => {
+  products.push(req.body)
+  res.json(req.body)
 })
 
 //Config del servidor
-const PORT = 8080
-const server = app.listen(PORT,() => {
-    console.log('servidor ejecutandose en el puerto: ', PORT)
-})
 
-server.on('error', error => console.log('Error en el servidor: ', error));
+const PORT = 8080;
+const server = app.listen(PORT, () =>{
+    console.log(`Servidor escuchando en el puerto ${server.address().port}`)
+})
+server.on('error', error => console.log(`Error en servidor ${error}`))
